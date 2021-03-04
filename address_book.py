@@ -8,6 +8,26 @@ contact_dictionary = {"name":{"relationship":"", "telephone_number":""}}
 relation_type = ["family", "friend", "coworker"]
 
 
+#Master Loop for Running the program
+while True:
+    print("Welcome to your address book.")
+    print("Enter 'add contact' to add a contact.")
+    print("Enter 'del contact' to delete a contact.")
+    print("Enter 'search' to search for a contact.")
+    response = input("What would you like to do?  ")
+    #Response to add a contact
+    if response.lower() == "add contact":
+        Commands.add_contact()
+        continue
+    #Response to delete a contact
+    elif response.lower() == "del contact":
+        Commands.del_contact()
+        continue
+    #Response to quit program
+    elif response.lower() == "quit":
+        break
+
+
 
 
 
