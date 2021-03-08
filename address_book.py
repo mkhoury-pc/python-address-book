@@ -23,9 +23,14 @@ while True:
     elif response.lower() == "del contact":
         Commands.del_contact()
         continue
+    #Response to search for a contact
+    elif response.lower() == "search":
+        Commands.search()
+        continue
     #Response to quit program
     elif response.lower() == "quit":
         break
+
 
 
 
