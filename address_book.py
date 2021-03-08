@@ -1,3 +1,5 @@
+import os 
+
 from Contact import Contact 
 from Commands import Commands
 

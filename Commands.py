@@ -9,7 +9,7 @@ class Commands:
     #Method to delete a contact
     def del_contact():
         name = input ("Enter the name of the contact to delete:  ")
-        del persondictionary [name]
+        del contact_dictionary [name]
 
     #Method to search for a contact
     def search():
