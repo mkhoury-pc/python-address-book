@@ -13,25 +13,26 @@ relation_type = ["family", "friend", "coworker"]
 #Master Loop for Running the program
 while True:
     print("Welcome to your address book.")
-    print("Enter 'add contact' to add a contact.")
-    print("Enter 'del contact' to delete a contact.")
-    print("Enter 'search' to search for a contact.")
+    print("Enter '0' to add a contact.")
+    print("Enter '1' to delete a contact.")
+    print("Enter '2' to search for a contact.")
+    print("Enter '3' to quit")
     response = input("What would you like to do?  ")
     
     #Response to add a contact
-    if response.lower() == "add contact":
+    if response == 0:
         Commands.add_contact()
         continue
     #Response to delete a contact
-    elif response.lower() == "del contact":
+    elif response == 1:
         Commands.del_contact()
         continue
     #Response to search for a contact
-    elif response.lower() == "search":
+    elif response == 2:
         Commands.search()
         continue
     #Response to quit program
-    elif response.lower() == "quit":
+    elif response == 3:
         break
     
 
