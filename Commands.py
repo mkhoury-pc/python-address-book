@@ -15,6 +15,7 @@ class Commands:
     def search():
         name = input ("Enter the name of the contact you are looking for:  ")
         if name in contact_dictionary:
-            print ("Name:%s, Relationship:%s, Phone:%s"%(name, contact_dictionary [name] ["relation"], contact_dictionary [name] ["telephone_number"]))
+            print ("Name: %s, Relationship: %s, Phone: %s"%(name, contact_dictionary [name] ["relation"], contact_dictionary [name] ["telephone_number"]))
         else:
             print ("Contact does not exist.")
+            

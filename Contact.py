@@ -6,3 +6,4 @@ class Contact:
         self.telephone_number = telephone_number
 
         contact_dictionary [name] = {"relation ":relation, "telephone number ":telephone_number}
+        

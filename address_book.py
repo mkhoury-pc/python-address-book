@@ -17,6 +17,7 @@ while True:
     print("Enter 'del contact' to delete a contact.")
     print("Enter 'search' to search for a contact.")
     response = input("What would you like to do?  ")
+    
     #Response to add a contact
     if response.lower() == "add contact":
         Commands.add_contact()
@@ -32,6 +33,7 @@ while True:
     #Response to quit program
     elif response.lower() == "quit":
         break
+    
 
 
 
