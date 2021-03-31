@@ -4,17 +4,14 @@ import pickle
 from contact import Contact 
 from commands import Commands
 
-
 #Dictionary to store contact information
-contact_dictionary = {"name":{"relation":"", "telephone_number":""}}
-#List of relation types 
-relation_type = ["family", "friend", "coworker"]
+contact_dictionary = {}
 
 master_loop_run = True
 #Assigning the address book data to a file to save dictionary data
 address_book_data = "addressbook.data"
 
-#Determine if dictionary data file exists, if it does load contents into disctionary
+#Determine if dictionary data file exists, if it does load contents into dictionary
 if os.path.exists(address_book_data):
     f = open(address_book_data, "rb")
     contact_dictionary = pickle.load(f)
@@ -37,23 +34,32 @@ while master_loop_run:
     print("Enter '2' to search for a contact.")
     print("Enter '3' to quit")
     response = input("What would you like to do?  ")
-    response_int = float(response)
-
+    #Make sure the user's input is an integer
+    try:
+        response = int(response)
+    #If not an integer raise a ValueError
+    except ValueError:
+        print("Invalid input.  Please try again...")
+        continue
     #Response to add a contact
-    if response_int == 0:
+    if response == 0:
         Commands.add_contact()
         continue
     #Response to delete a contact
-    elif response_int == 1:
+
+    elif response == 1:
         Commands.del_contact()
         continue
     #Response to search for a contact
-    elif response_int == 2:
+    elif response == 2:
         Commands.search()
         continue
     #Response to quit program
-    elif response_int == 3:
+    elif response == 3:
         break
+    else:
+        print("Invalid option.  Please try again!")
+        continue
     
 
 
