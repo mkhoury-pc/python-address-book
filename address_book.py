@@ -19,7 +19,7 @@ def add_contact():
     input_telephone_number = input("Enter the contact's phone number:  ")
     contact_dict[input_name] = input_telephone_number
     print("Added " + input_name + " with telephone number " + input_telephone_number)
-    with open("contacts.json", 'a') as f:
+    with open("contacts.json", "w") as f:
         json.dump(contact_dict, f)
     time.sleep(1)
     
@@ -30,6 +30,10 @@ def del_contact():
     if contact in contact_dict:
         del contact_dict[contact]
         print("Deleted " + contact)
+        with open("contacts.json", "w") as f:
+            json.dump(contact_dict, f)
+        time.sleep(1)
+
     else:
         print("Contact does not exist.")
         time.sleep(1)
