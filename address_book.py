@@ -1,5 +1,6 @@
 import os 
 import json
+import time
 
 #Dictionary to store contact information
 contact_dictionary = {}
@@ -12,17 +13,21 @@ def add_contact():
     input_name = input("Enter the contact's name:  ")
     input_telephone_number = input("Enter the contact's phone number:  ")
     contact_dictionary[input_name] = input_telephone_number
+    print("Added " + input_name + " with telephone number " + input_telephone_number)
     with open(address_book_data, 'a') as f:
         f.write(json.dumps(contact_dictionary))
+    time.sleep(1)
     
 
 #Function to delete a contact
 def del_contact():
     contact = input("Enter the name of the contact to delete:  ")
     if contact in contact_dictionary:
-        del contact_dictionary[name]
+        del contact_dictionary[contact]
+        print("Deleted " + contact)
     else:
         print("Contact does not exist.")
+        time.sleep(1)
 
 
 #Function to search for a contact
@@ -47,6 +52,8 @@ while True:
     #If not an integer raise a ValueError
     except ValueError:
         print("Invalid input.  Please try again...")
+        time.sleep(1)
+        continue
         
     #Response to add a contact
     if response == 0:
@@ -66,5 +73,6 @@ while True:
     
     else:
         print("Invalid option.  Please try again!")
+        time.sleep(1)
         
 
