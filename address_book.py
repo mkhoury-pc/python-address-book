@@ -1,33 +1,40 @@
 import os 
-import pickle
-
-from contact import Contact 
-from commands import Commands
+import json
 
 #Dictionary to store contact information
 contact_dictionary = {}
 
-master_loop_run = True
 #Assigning the address book data to a file to save dictionary data
-address_book_data = "addressbook.data"
+address_book_data = "address_book_data.json"
 
-#Determine if dictionary data file exists, if it does load contents into dictionary
-if os.path.exists(address_book_data):
-    f = open(address_book_data, "rb")
-    contact_dictionary = pickle.load(f)
-#If the file does not exist prompt to create one
-else:
-    file_question = input("Contact file not found.  Create one?  'y' or 'n'    ")
-    if file_question == "y":
-        f = open(address_book_data, "wb")
-        pickle.dump(contact_dictionary, f)
-        f.close()
-    elif file_question == "n":
-        master_loop_run = False
+#Function to add a contact
+def add_contact():
+    input_name = input("Enter the contact's name:  ")
+    input_telephone_number = input("Enter the contact's phone number:  ")
+    contact_dictionary[input_name] = input_telephone_number
+    with open(address_book_data, 'a') as f:
+        f.write(json.dumps(contact_dictionary))
+    
 
+#Function to delete a contact
+def del_contact():
+    contact = input("Enter the name of the contact to delete:  ")
+    if contact in contact_dictionary:
+        del contact_dictionary[name]
+    else:
+        print("Contact does not exist.")
+
+
+#Function to search for a contact
+def search():
+    name = input("Enter the name of the contact you are looking for:  ")
+    if name in contact_dictionary:
+        print("Name: %s, Phone: %s"%(name, contact_dictionary [name], contact_dictionary [name] ["telephone_number"]))
+    else:
+        print("Contact does not exist.")
 
 #Master Loop for Running the program
-while master_loop_run:
+while True:
     print("Welcome to your address book.")
     print("Enter '0' to add a contact.")
     print("Enter '1' to delete a contact.")
@@ -40,30 +47,24 @@ while master_loop_run:
     #If not an integer raise a ValueError
     except ValueError:
         print("Invalid input.  Please try again...")
-        continue
+        
     #Response to add a contact
     if response == 0:
-        Commands.add_contact()
-        continue
+        add_contact()
+        
     #Response to delete a contact
-
     elif response == 1:
-        Commands.del_contact()
-        continue
+        del_contact()
+        
     #Response to search for a contact
     elif response == 2:
-        Commands.search()
-        continue
+        search()
+        
     #Response to quit program
     elif response == 3:
         break
+    
     else:
         print("Invalid option.  Please try again!")
-        continue
-    
-
-
-
-
-
+        
 
